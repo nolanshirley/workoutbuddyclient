@@ -4,22 +4,27 @@ type user = {
     userIdentification: () => void
 }
 
-// type body = {
-//     currentUser: number
-// }
+type body = {
+    currentUser: any, 
+    modal: boolean
+}
 
-class Routines extends Component <user, {}> {
+class Routines extends Component <user, body> {
     
     constructor(props: user) {
         super(props)
         this.state = {
-            routine: '',
-            modal: false
+            currentUser: '',
+            modal: false 
         }
     }
 
 
-
+    toggle = () => {
+        this.setState({
+            modal: true
+        })
+    }
 
 
     render () {

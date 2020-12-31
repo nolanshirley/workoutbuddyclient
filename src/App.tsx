@@ -2,7 +2,7 @@ import React from 'react';
 import Auth from './components/Auth/Auth'; 
 import Navbar from './components/Navbar/Navbar'; 
 import Routine from './components/Routine/Routines'; 
-import All from './components/All Routines/Favorites'; 
+import Favorite from './components/All Routines/Favorites'; 
 
 
 class App extends React.Component {
@@ -45,7 +45,7 @@ class App extends React.Component {
           { !this.state.sessionToken ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
             <Navbar removeToken={this.removeToken} /> 
             <Routine currentUser={this.state.currentUser} /> 
-            <All currentUser={this.state.currentUser} sessionToken={this.state.sessionToken} />
+            <Favorite currentUser={this.state.currentUser} sessionToken={this.state.sessionToken} />
             </div>}
         </div>
       )

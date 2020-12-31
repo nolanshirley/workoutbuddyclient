@@ -1,6 +1,12 @@
 import { Component } from 'react'; 
 
-class Favorites extends Component {
+type User = {
+    currentUser: any
+}
+
+class Favorites extends Component <any, User>{
+
+    
 
     render () {
         return (
