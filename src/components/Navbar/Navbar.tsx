@@ -1,6 +1,10 @@
 import { Component } from 'react'; 
 
-class Navbar extends Component {
+type clearToken = {
+    removeToken: () => void
+}
+
+class Navbar extends Component <clearToken, {}> {
 
     render () {
         return (

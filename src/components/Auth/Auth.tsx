@@ -23,18 +23,16 @@ class Auth extends Component <token, body>  { // <token, {}> throw in the empty 
         }
     }
     
-
     handleSubmit = (e: any) => {
         e.preventDefault(); 
     
         const url = "http://localhost:3000/user/signup"
-
         const body = {
           email: this.state.email,
           password: this.state.password, 
           username: this.state.username,
           role: "user"
-        }
+        } 
         fetch(url, {
           method: 'POST', 
           headers: {

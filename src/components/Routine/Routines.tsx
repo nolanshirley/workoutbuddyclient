@@ -1,6 +1,25 @@
 import { Component } from 'react'; 
 
-class Routines extends Component {
+type user = {
+    userIdentification: () => void
+}
+
+// type body = {
+//     currentUser: number
+// }
+
+class Routines extends Component <user, {}> {
+    
+    constructor(props: user) {
+        super(props)
+        this.state = {
+            routine: '',
+            modal: false
+        }
+    }
+
+
+
 
 
     render () {
