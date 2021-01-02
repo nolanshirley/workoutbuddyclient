@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from './components/Auth/Auth'; 
 import Navbar from './components/Navbar/Navbar'; 
-import Routine from './components/Routine/Routines'; 
+import Routines from './components/Routine/Routines'; 
 import Favorite from './components/All Routines/Favorites'; 
 
 
@@ -17,6 +17,7 @@ class App extends React.Component {
     if (token) {
       this.setState.bind({ sessionToken: token }) // why do I need to bind this? 
     }
+    this.userIdentification(); // added this to call the function for a user to get their userId
   }
 
   userIdentification = () => {
@@ -44,9 +45,9 @@ class App extends React.Component {
         <div className="App">
           { !this.state.sessionToken ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
             <Navbar removeToken={this.removeToken} /> 
-            <Routine currentUser={this.state.currentUser} /> 
+            <Routines currentUser={this.state.currentUser} /> 
             <Favorite currentUser={this.state.currentUser} sessionToken={this.state.sessionToken} />
-            </div>}
+            </div> }
         </div>
       )
   }

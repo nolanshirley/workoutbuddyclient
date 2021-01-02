@@ -1,31 +1,36 @@
 import { Component } from 'react'; 
 
-type user = {
-    userIdentification: () => void
-}
-
 type body = {
-    currentUser: any, 
-    modal: boolean
+    currentUser: string
 }
 
-class Routines extends Component <user, body> {
+type User = {
+    modal: boolean, 
+    routine: any
+}
+
+class Routines extends Component < body, User > {
     
-    constructor(props: user) {
+    constructor(props: body) {
         super(props)
         this.state = {
-            currentUser: '',
-            modal: false 
+            modal: false, 
+            routine: []
         }
     }
 
-
     toggle = () => {
-        this.setState({
-            modal: true
-        })
+        this.setState(state => ({ modal: !state.modal}))
     }
 
+
+    getRoutines = () => {
+        fetch('http://localhost:3000/routine/', {
+            method: 'GET'
+        })
+        .then(r => r.json)
+        .then(rArr => this.state.routine(rArr))
+    }
 
     render () {
         return (
