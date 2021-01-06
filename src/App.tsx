@@ -48,7 +48,7 @@ class App extends React.Component {
           </div>
           { !this.state.sessionToken ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
             <Navbar removeToken={this.removeToken} /> 
-            <Routines currentUser={this.state.currentUser} /> 
+            <Routines currentUser={this.userIdentification} /> 
             <Favorite currentUser={this.state.currentUser} sessionToken={this.state.sessionToken} />
             </div> }
         </div>

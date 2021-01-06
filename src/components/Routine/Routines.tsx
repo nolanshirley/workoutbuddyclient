@@ -1,7 +1,9 @@
 import { Component } from 'react'; 
+import { Button, Modal } from 'reactstrap'; 
+import CreateRoutine from '../Routine/CreateRoutine';
 
-type body = {
-    currentUser: any
+type body = { 
+    currentUser: () => void
 }
 
 type User = {
@@ -23,6 +25,10 @@ class Routines extends Component < body, User > {
         this.setState(state => ({ modal: !this.state.modal}))
     }
 
+    componentDidMount() {
+        this.getRoutines()
+    }
+
 
     getRoutines = () => {
         fetch('http://localhost:3000/routine/', {
@@ -35,7 +41,11 @@ class Routines extends Component < body, User > {
     render () {
         return (
             <div>
-
+                <Button type="button" onClick={this.toggle}> Create Routine </Button>
+                <Modal className="routineModal">
+                    <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} currentUser={this.props.currentUser}/>
+                </Modal>
+                
             </div>
         )
     }
