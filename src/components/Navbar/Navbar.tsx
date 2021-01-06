@@ -5,17 +5,16 @@ type clearToken = {
     removeToken: () => void
 }
 
-class Navbar extends Component <clearToken, {}> {
+class Navbar extends Component <{}, clearToken> {
 
     constructor(props: clearToken) {
         super(props)
-
     }
 
     render () {
         return (
             <div>
-                <Logout removeToken={this.props.removeToken}/>
+                <Logout clearToken={this.props.removeToken()} />
             </div>
         )
     }

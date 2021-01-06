@@ -1,7 +1,7 @@
 import { Component } from 'react'; 
 
 type body = {
-    currentUser: string
+    currentUser: any
 }
 
 type User = {
@@ -20,7 +20,7 @@ class Routines extends Component < body, User > {
     }
 
     toggle = () => {
-        this.setState(state => ({ modal: !state.modal}))
+        this.setState(state => ({ modal: !this.state.modal}))
     }
 
 

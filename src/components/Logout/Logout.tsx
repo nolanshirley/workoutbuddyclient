@@ -1,8 +1,16 @@
 import { Component } from 'react'; 
 
+type clearToken = {
+    removeToken: () => void
+}
 
+class Logout extends Component <{}, clearToken> {
 
-class Logout extends Component {
+    constructor(props: clearToken) {
+        super(props)
+
+        
+    }
 
     render () {
         return (

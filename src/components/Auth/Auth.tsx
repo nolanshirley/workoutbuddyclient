@@ -1,12 +1,12 @@
 import { Component } from 'react'; 
-import { Button, Modal } from 'reactstrap'; 
+import { Button, Modal, ModalBody, ModalFooter, FormGroup, Form, Label, Input } from 'reactstrap'; 
 
 type token = {
     tokenUpdate: (arg1: string, arg2: string) => void // this is how you pass a function down to a child component 
 }
 
 type body = {
-    email: any, 
+    email: string, 
     password: any, 
     username: any, 
     role: string, 
@@ -67,19 +67,61 @@ class Auth extends Component <token, body>  { // <token, {}> throw in the empty 
           .then(rObj => this.props.tokenUpdate(rObj.sessionToken, rObj.user.id))
       }
 
-      toggle = () => {
-        this.setState(state => ({ modal: !state.modal}))
+      signupToggle = () => {
+        this.setState(state => ({ modal: !this.state.modal})) // you want to make key value pairs within class components and you can set multiple states within setState
       }
+
 
     render () {
         return (
             <div>
-                <div>
-                    <Button onclick={this.toggle}> Signup </Button>
-                    <Modal isOpen={this.state.modal}>
-                        
-                    </Modal>
-                </div>
+                <Button id="btn-primary" onClick={this.signupToggle} type="button"> Login </Button>
+                <Modal isOpen={this.state.modal} className="createModal">
+                        <h1> Login </h1>
+                        <Form>
+                            <ModalBody>
+                                <FormGroup>
+                                    <Label htmlFor="email"> Email </Label>
+                                    <br />
+                                    <Input value={this.state.email} onChange={e => this.setState({email: e.target.value})}/>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label htmlFor="password"> Password </Label>
+                                    <br />
+                                    <Input value={this.state.password} onChange={e => this.setState({password: e.target.value})}/>
+                                </FormGroup>
+                            </ModalBody>
+                            <br />
+                                <Button id="btn-primary" onClick={this.funcLogin} type="button"> Submit </Button>
+                        </Form>
+                        <br /> 
+                        <div>
+                            <h1> Signup Here! </h1>
+                        </div>
+                        <Form>
+                            <ModalBody>
+                                <FormGroup>
+                                    <Label htmlFor="email"> Email </Label>
+                                    <br />
+                                    <Input value={this.state.email} onChange={e => this.setState({email: e.target.value})}/>
+                                </FormGroup>  
+                                <FormGroup>
+                                    <Label htmlFor="password"> Password </Label>
+                                    <br />
+                                    <Input value={this.state.password} onChange={e => this.setState({email: e.target.value})}/>
+                                </FormGroup> 
+                                <FormGroup>
+                                    <Label htmlFor="username"> Username </Label>
+                                    <br />
+                                    <Input value={this.state.username} onChange={e => this.setState({username: e.target.value})} />
+                                </FormGroup>   
+                            </ModalBody> 
+                        </Form>
+                            <br />
+                            <ModalFooter>
+                                <Button id="btn-primary" onClick={this.funcSignup}>Submit</Button>
+                            </ModalFooter>
+                </Modal>
             </div>
         )
     }

@@ -43,6 +43,9 @@ class App extends React.Component {
     render () {
       return (
         <div className="App">
+          <div className="title">
+            <h1> Workout Buddy </h1>
+          </div>
           { !this.state.sessionToken ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
             <Navbar removeToken={this.removeToken} /> 
             <Routines currentUser={this.state.currentUser} /> 
@@ -52,8 +55,6 @@ class App extends React.Component {
       )
   }
 }
-
-
 
 
 export default App;
