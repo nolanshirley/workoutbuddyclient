@@ -1,11 +1,12 @@
 import { Component } from 'react'; 
 import Logout from '../Logout/Logout'; 
+import { Nav, NavItem, NavbarText, Navbar } from 'reactstrap'; 
 
 type clearToken = {
     removeToken: () => void
 }
 
-class Navbar extends Component <{}, clearToken> {
+class Navbars extends Component <clearToken, {}> {
 
     constructor(props: clearToken) {
         super(props)
@@ -14,10 +15,21 @@ class Navbar extends Component <{}, clearToken> {
     render () {
         return (
             <div>
-                <Logout clearToken={this.props.removeToken()} />
+                <Navbar className="navbar" expand="md">
+                    <Nav>
+                        <NavItem>   
+                            <NavbarText>
+                                Workout Buddy
+                            </NavbarText>
+                        </NavItem>
+                        <NavItem>
+                            <Logout removeToken = {this.props.removeToken}/>
+                        </NavItem>
+                    </Nav>
+                </Navbar>
             </div>
         )
     }
 }
 
-export default Navbar; 
+export default Navbars; 
