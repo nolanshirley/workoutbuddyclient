@@ -51,7 +51,7 @@ class createRoutine extends Component <props, state> {
             duration: this.state.duration, 
             sets: this.state.sets, 
             reps: this.state.reps, 
-            userId: this.props.currentUser
+            userId: this.props.currentUser 
         }
         const url = 'http://localhost:3000/routine/workout'
         fetch(url, {
@@ -88,22 +88,22 @@ class createRoutine extends Component <props, state> {
                         <br />
                         <FormGroup>
                             <Label htmlFor="weight"> Weight </Label>
-                            <Input value={this.state.weight} type="range" min="1" max="50" onChange={e => this.setState({weight: e.target.value})} /> 
+                            <Input value={this.state.weight} type="range" min="1" max="50" onChange={e => this.setState({weight: parseInt(e.target.value)})} /> 
                         </FormGroup>
                         <br />
                         <FormGroup>
                             <Label htmlFor="duration"> Duration </Label>
-                            <Input value={this.state.duration} type="range" min="1" max="200" onChange={e => this.setState({duration: e.target.value})} /> 
+                            <Input value={this.state.duration} type="range" min="1" max="200" onChange={e => this.setState({duration: parseInt(e.target.value)})} /> 
                         </FormGroup>
                         <br />
                         <FormGroup>
                             <Label htmlFor="sets"> Sets </Label>
-                            <Input value={this.state.sets} type="range" min="1" max="50" onChange={e => this.setState({sets: e.target.value})} /> 
+                            <Input value={this.state.sets} type="range" min="1" max="50" onChange={e => this.setState({sets: parseInt(e.target.value)})} /> 
                         </FormGroup>
                         <br />
                         <FormGroup>
                             <Label htmlFor="reps"> Reps </Label>
-                            <Input value={this.state.reps} type="range" min="1" max="200" onChange={e => this.setState({reps: e.target.value})} /> 
+                            <Input value={this.state.reps} type="range" min="1" max="200" onChange={e => this.setState({reps: parseInt(e.target.value)})} /> 
                         </FormGroup>
                     </ModalBody>
                     <ModalFooter>

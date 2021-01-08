@@ -14,9 +14,9 @@ class Logout extends Component <clearToken, {}> {
 
     logout = (e: any) => {
         e.preventDefault()
-        {this.props.removeToken}
+        this.props.removeToken()
     }
-    
+
     render () {
         return (
             <div>

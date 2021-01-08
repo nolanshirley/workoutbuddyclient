@@ -1,6 +1,7 @@
 import { Component } from 'react'; 
 import { Button, Modal } from 'reactstrap'; 
 import CreateRoutine from '../Routine/CreateRoutine';
+import RoutineList from '../All Routines/RoutineList'; 
 
 type body = { 
     currentUser: () => void
@@ -45,7 +46,7 @@ class Routines extends Component < body, User > {
                 <Modal className="routineModal">
                     <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} currentUser={this.props.currentUser}/>
                 </Modal>
-                
+                <RoutineList currentUser={this.props.currentUser}  />
             </div>
         )
     }
