@@ -35,8 +35,8 @@ class Routines extends Component < body, User > {
         fetch('http://localhost:3000/routine/', {
             method: 'GET'
         })
-        .then(r => r.json)
-        .then(rArr => this.state.routine(rArr))
+        .then(r => r.json())
+        .then(rArr => this.setState({ routine: rArr}))
     }
 
     render () {
@@ -46,7 +46,7 @@ class Routines extends Component < body, User > {
                 <Modal className="routineModal">
                     <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} currentUser={this.props.currentUser}/>
                 </Modal>
-                <RoutineList currentUser={this.props.currentUser}  />
+                <RoutineList currentUser={this.props.currentUser} routineArray={this.state.routine} /> 
             </div>
         )
     }
