@@ -1,11 +1,11 @@
 import { Component } from 'react'; 
 import { Button, Modal, ModalBody, ModalFooter, FormGroup, Form, Label, Input } from 'reactstrap'; 
 
-type token = {
+type authProps = {
     tokenUpdate: (arg1: string, arg2: string) => void // this is how you pass a function down to a child component 
 }
 
-type body = {
+type authState = {
     email: string, 
     password: any, 
     username: any, 
@@ -13,9 +13,9 @@ type body = {
     modal: boolean
 }
 
-class Auth extends Component <token, body>  { // <token, {}> throw in the empty curly braces if no useStates have been declared yet 
+class Auth extends Component <authProps, authState>  { // <token, {}> use empty curly braces if no states or props have been declared yet 
 
-    constructor(props: token) {
+    constructor(props: authProps) {
         super(props)
         this.state = {
             email: '', 

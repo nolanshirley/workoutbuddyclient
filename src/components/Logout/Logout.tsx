@@ -1,13 +1,13 @@
 import { Component } from 'react'; 
 import { Button } from 'reactstrap'; 
 
-type clearToken = {
+type logoutProps = {
     removeToken: () => void
 }
 
-class Logout extends Component <clearToken, {}> {
+class Logout extends Component <logoutProps, {}> {
 
-    constructor(props: clearToken) {
+    constructor(props: logoutProps) {
         super(props)
 
     }

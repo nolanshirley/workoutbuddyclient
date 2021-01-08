@@ -2,13 +2,13 @@ import { Component } from 'react';
 import Logout from '../Logout/Logout'; 
 import { Nav, NavItem, NavbarText, Navbar } from 'reactstrap'; 
 
-type clearToken = {
+type navbarProps = {
     removeToken: () => void
 }
 
-class Navbars extends Component <clearToken, {}> {
+class Navbars extends Component <navbarProps, {}> {
 
-    constructor(props: clearToken) {
+    constructor(props: navbarProps) {
         super(props)
     }
 

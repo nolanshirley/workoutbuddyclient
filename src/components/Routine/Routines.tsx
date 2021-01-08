@@ -3,18 +3,18 @@ import { Button, Modal } from 'reactstrap';
 import CreateRoutine from '../Routine/CreateRoutine';
 import RoutineList from '../All Routines/RoutineList'; 
 
-type body = { 
+type routinesProps = { 
     currentUser: () => void
 }
 
-type User = {
+type routinesState = {
     modal: boolean, 
     routine: any
 }
 
-class Routines extends Component < body, User > {
+class Routines extends Component < routinesProps, routinesState > {
     
-    constructor(props: body) {
+    constructor(props: routinesProps) {
         super(props)
         this.state = {
             modal: false, 
@@ -46,7 +46,7 @@ class Routines extends Component < body, User > {
                 <Modal className="routineModal">
                     <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} currentUser={this.props.currentUser}/>
                 </Modal>
-                <RoutineList currentUser={this.props.currentUser} routineArray={this.state.routine} /> 
+                <RoutineList currentUser={this.props.currentUser} routineArray={this.state.routine} routineFetch={this.getRoutines}/> 
             </div>
         )
     }

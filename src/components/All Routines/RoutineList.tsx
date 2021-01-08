@@ -1,14 +1,15 @@
 import {Component } from 'react'; 
 import { Container, Row } from 'reactstrap'; 
-import Favorites from '../All Routines/Favorites'; 
+import RoutineIndex from '../All Routines/RoutineIndex'; 
 
 type routineListProps = {
     currentUser: () => void, 
-    routineArray: any
+    routineArray: any, 
+    routineFetch: () => void
 }
 
 type routineListStates = {
-    
+    routineArray: any
 }
 
 
@@ -26,7 +27,7 @@ class RoutineList extends Component <routineListProps, routineListStates> {
         return (
             <Container>
                 <Row>
-                    {}
+                    {this.state.routineArray.map((wbObj: any, i: any) => <RoutineIndex wb={wbObj} key={i}  currentUser={this.props.currentUser}  routineFetch={this.props.routineFetch}/>)}
                 </Row>
             </Container>
         )

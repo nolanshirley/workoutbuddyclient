@@ -2,13 +2,13 @@ import { Component } from 'react';
 import { ModalHeader, Form, ModalBody, ModalFooter, FormGroup, Label, Input, Button } from 'reactstrap';
 
 
-type props = {
+type createRoutineProps = {
     toggle: () => void, 
     getRoutines: () => void, 
     currentUser: () => void
 }
 
-type state = {
+type createRoutineState = {
     exercise: string, 
     equipment: string, 
     weight: number, 
@@ -17,9 +17,9 @@ type state = {
     reps: number
 }
 
-class createRoutine extends Component <props, state> {
+class createRoutine extends Component <createRoutineProps, createRoutineState> {
 
-    constructor(prop: props) {
+    constructor(prop: createRoutineProps) {
         super(prop)
         this.state = {
             exercise: '', 
