@@ -1,6 +1,6 @@
 import {Component } from 'react'; 
 import { Container, Row } from 'reactstrap'; 
-import RoutineIndex from '../All Routines/RoutineIndex'; 
+import RoutineIndex from './RoutineIndex'; 
 
 type routineListProps = {
     currentUser: () => void, 

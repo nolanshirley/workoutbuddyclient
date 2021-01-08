@@ -1,7 +1,7 @@
 import { Component } from 'react'; 
 import { Button, Modal } from 'reactstrap'; 
 import CreateRoutine from '../Routine/CreateRoutine';
-import RoutineList from '../All Routines/RoutineList'; 
+import RoutineList from '../All Routines/RoutineMap'; 
 
 type routinesProps = { 
     currentUser: () => void
