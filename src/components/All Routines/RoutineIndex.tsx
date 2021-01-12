@@ -1,5 +1,6 @@
 import {Component } from 'react'; 
 import {Card, CardTitle, CardBody, Button, Modal} from 'reactstrap'; 
+import RoutineEdit from '../All Routines/RoutineEdit'; 
 
 type RoutineIndexProps = {
     currentUser: () => void, 
@@ -51,8 +52,8 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
                         <p> Sets: {this.props.wb.sets} </p> 
                         <p> Reps: {this.props.wb.reps} </p>
                     </CardBody>
-                    <Modal>
-                        {/* Routine Edit will go here */}
+                    <Modal isOpen={this.state.modal} >
+                        <RoutineEdit toggle={this.toggle} wb={this.props.wb} routineFetch={this.props.routineFetch} currentUser={this.props.currentUser}/> 
                     </Modal>
                         <Button type="button" > Delete Routine </Button>
                         <Button type="button" onClick={this.toggle}> Edit Routine </Button>
