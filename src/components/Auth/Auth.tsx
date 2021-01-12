@@ -91,10 +91,8 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
                                     <Input value={this.state.password} onChange={e => this.setState({password: e.target.value})}/>
                                 </FormGroup>
                             </ModalBody>
-                            <br />
-                                <Button id="btn-primary" onClick={this.funcLogin} type="button"> Submit </Button>
+                                {/* <Button id="btn-primary" onClick={this.funcLogin} type="button"> Submit </Button> */}
                         </Form>
-                        <br /> 
                         <div>
                             <h1> Signup Here! </h1>
                         </div>
@@ -108,7 +106,7 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
                                 <FormGroup>
                                     <Label htmlFor="password"> Password </Label>
                                     <br />
-                                    <Input value={this.state.password} onChange={e => this.setState({email: e.target.value})}/>
+                                    <Input value={this.state.password} onChange={e => this.setState({password: e.target.value})}/>
                                 </FormGroup> 
                                 <FormGroup>
                                     <Label htmlFor="username"> Username </Label>

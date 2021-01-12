@@ -7,11 +7,6 @@ type logoutProps = {
 
 class Logout extends Component <logoutProps, {}> {
 
-    constructor(props: logoutProps) {
-        super(props)
-
-    }
-
     logout = (e: any) => {
         e.preventDefault()
         this.props.removeToken()

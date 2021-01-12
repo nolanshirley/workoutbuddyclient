@@ -4,7 +4,8 @@ import CreateRoutine from '../Routine/CreateRoutine';
 import RoutineList from '../All Routines/RoutineMap'; 
 
 type routinesProps = { 
-    currentUser: () => void
+    currentUser: () => void, 
+    sessionToken: any
 }
 
 type routinesState = {
@@ -43,8 +44,8 @@ class Routines extends Component < routinesProps, routinesState > {
         return (
             <div>
                 <Button type="button" onClick={this.toggle}> Create Routine </Button>
-                <Modal className="routineModal">
-                    <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} currentUser={this.props.currentUser}/>
+                <Modal className="routineModal" isOpen={this.state.modal}>
+                    <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} sessionToken={this.props.sessionToken} currentUser={this.props.currentUser}/>
                 </Modal>
                 <RoutineList currentUser={this.props.currentUser} routineArray={this.state.routine} routineFetch={this.getRoutines}/> 
             </div>

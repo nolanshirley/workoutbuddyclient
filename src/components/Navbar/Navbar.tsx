@@ -8,9 +8,6 @@ type navbarProps = {
 
 class Navbars extends Component <navbarProps, {}> {
 
-    constructor(props: navbarProps) {
-        super(props)
-    }
 
     render () {
         return (

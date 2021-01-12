@@ -5,7 +5,8 @@ import { ModalHeader, Form, ModalBody, ModalFooter, FormGroup, Label, Input, But
 type createRoutineProps = {
     toggle: () => void, 
     getRoutines: () => void, 
-    currentUser: () => void
+    currentUser: () => void, 
+    sessionToken: any
 }
 
 type createRoutineState = {
@@ -57,6 +58,7 @@ class createRoutine extends Component <createRoutineProps, createRoutineState> {
         fetch(url, {
             method: 'POST', 
             headers: {
+                'Authorization': this.props.sessionToken,
                 'Content-Type': 'application/json'
             }, 
             body: JSON.stringify(body)
@@ -88,22 +90,26 @@ class createRoutine extends Component <createRoutineProps, createRoutineState> {
                         <br />
                         <FormGroup>
                             <Label htmlFor="weight"> Weight </Label>
-                            <Input value={this.state.weight} type="range" min="1" max="50" onChange={e => this.setState({weight: parseInt(e.target.value)})} /> 
+                            <Input value={this.state.weight} type="range" min="1" max="500" onChange={e => this.setState({weight: parseInt(e.target.value)})}/> 
+                        {this.state.weight } lbs
                         </FormGroup>
-                        <br />
+                        <br /> 
                         <FormGroup>
                             <Label htmlFor="duration"> Duration </Label>
-                            <Input value={this.state.duration} type="range" min="1" max="200" onChange={e => this.setState({duration: parseInt(e.target.value)})} /> 
+                            <Input value={this.state.duration} type="range" min="1" max="60" onChange={e => this.setState({duration: parseInt(e.target.value)})} /> 
+                        {this.state.duration} min
                         </FormGroup>
                         <br />
                         <FormGroup>
                             <Label htmlFor="sets"> Sets </Label>
-                            <Input value={this.state.sets} type="range" min="1" max="50" onChange={e => this.setState({sets: parseInt(e.target.value)})} /> 
+                            <Input value={this.state.sets} type="range" min="1" max="20" onChange={e => this.setState({sets: parseInt(e.target.value)})} /> 
+                        {this.state.sets}
                         </FormGroup>
                         <br />
                         <FormGroup>
                             <Label htmlFor="reps"> Reps </Label>
                             <Input value={this.state.reps} type="range" min="1" max="200" onChange={e => this.setState({reps: parseInt(e.target.value)})} /> 
+                        {this.state.reps}
                         </FormGroup>
                     </ModalBody>
                     <ModalFooter>

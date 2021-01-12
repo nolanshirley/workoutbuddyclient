@@ -4,8 +4,12 @@ import Navbar from './components/Navbar/Navbar';
 import Routines from './components/Routine/Routines'; 
 import Favorite from './components/All Routines/Favorites'; 
 
+type appState = {
+  sessionToken: any, 
+  currentUser: any
+}
 
-class App extends React.Component {
+class App extends React.Component <{}, appState>{
 
   state = {
     sessionToken: undefined, 
@@ -48,7 +52,7 @@ class App extends React.Component {
           </div>
           { !this.state.sessionToken ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
             <Navbar removeToken={this.removeToken} /> 
-            <Routines currentUser={this.userIdentification} /> 
+            <Routines currentUser={this.userIdentification} sessionToken={this.state.sessionToken}/> 
             {/* <Favorite currentUser={this.state.currentUser} sessionToken={this.state.sessionToken} /> */}
             </div> }
         </div>
