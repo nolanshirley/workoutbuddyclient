@@ -3,6 +3,7 @@ import Auth from './components/Auth/Auth';
 import Navbar from './components/Navbar/Navbar'; 
 import Routines from './components/Routine/Routines'; 
 import Favorite from './components/All Routines/Favorites'; 
+import './App.css'; 
 
 type appState = {
   sessionToken: any, 
@@ -48,7 +49,7 @@ class App extends React.Component <{}, appState>{
       return (
         <div className="App">
           <div className="title">
-            <h1> Workout Buddy </h1>
+            <h1 className="titleText"> Workout Buddy </h1>
           </div>
           { !localStorage.getItem('token') ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
             <Navbar removeToken={this.removeToken} /> 

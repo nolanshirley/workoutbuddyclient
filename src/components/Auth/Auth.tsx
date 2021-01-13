@@ -1,5 +1,6 @@
 import { Component } from 'react'; 
 import { Button, Modal, ModalBody, ModalFooter, FormGroup, Form, Label, Input } from 'reactstrap'; 
+import '../Auth/Auth.css'; 
 
 type authProps = {
     tokenUpdate: (arg1: string, arg2: string) => void // this is how you pass a function down to a child component 
@@ -80,8 +81,8 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
 
     render () {
         return (
-            <div>
-                <Button id="btn-primary" onClick={this.signupToggle} type="button"> Login </Button>
+            <div className="authDiv">
+                <Button id="btn-primary" className="btn-primary" onClick={this.signupToggle} type="button"> Login </Button>
                 <Modal isOpen={this.state.modal} className="createModal">
                         <h1> Login </h1>
                         <Form>
