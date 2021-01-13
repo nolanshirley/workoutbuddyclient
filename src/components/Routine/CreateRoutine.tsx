@@ -75,7 +75,7 @@ class createRoutine extends Component <createRoutineProps, createRoutineState> {
     render () {
         return (
             <div>
-                <ModalHeader charCode="WB"><h1> Create a New Routine </h1></ModalHeader> 
+                <ModalHeader charCode="WB"> Create a New Routine </ModalHeader> 
                 <Form> 
                     <ModalBody>
                         <FormGroup>

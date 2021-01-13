@@ -6,8 +6,10 @@ type authProps = {
 }
 
 type authState = {
-    email: string, 
-    password: any, 
+    loginemail: string, 
+    signemail: string
+    loginpassword: any, 
+    signpassword: any,
     username: any, 
     role: string, 
     modal: boolean
@@ -18,8 +20,10 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
     constructor(props: authProps) {
         super(props)
         this.state = {
-            email: '', 
-            password: '', 
+            loginemail: '', 
+            loginpassword: '',
+            signemail: '', 
+            signpassword: '',
             username: '', 
             role: 'user', 
             modal: false
@@ -31,8 +35,8 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
     
         const url = "http://localhost:3000/user/signup"
         const body = {
-          email: this.state.email,
-          password: this.state.password, 
+          email: this.state.signemail,
+          password: this.state.signpassword, 
           username: this.state.username,
           role: "user"
         } 
@@ -50,10 +54,10 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
       funcLogin = (e: any) => {
           e.preventDefault(); 
 
-          const url = 'http://localhost:3000/user/login'
+          const url = 'http://localhost:3000/user/signin'
           const body = {
-              email: this.state.email, 
-              password: this.state.password, 
+              email: this.state.loginemail, 
+              password: this.state.loginpassword, 
               role: 'user'
           }
           fetch(url, {
@@ -64,7 +68,9 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
               body: JSON.stringify(body)
           })
           .then(r => r.json())
-          .then(rObj => this.props.tokenUpdate(rObj.sessionToken, rObj.user.id))
+          .then(rObj => {
+            console.log(rObj)  
+            this.props.tokenUpdate(rObj.sessionToken, rObj.user.id)})
       }
 
       signupToggle = () => {
@@ -83,15 +89,17 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
                                 <FormGroup>
                                     <Label htmlFor="email"> Email </Label>
                                     <br />
-                                    <Input value={this.state.email} onChange={e => this.setState({email: e.target.value})}/>
+                                    <Input value={this.state.loginemail} onChange={e => this.setState({loginemail: e.target.value})}/>
                                 </FormGroup>
                                 <FormGroup>
                                     <Label htmlFor="password"> Password </Label>
                                     <br />
-                                    <Input value={this.state.password} onChange={e => this.setState({password: e.target.value})}/>
+                                    <Input value={this.state.loginpassword} onChange={e => this.setState({loginpassword: e.target.value})}/>
                                 </FormGroup>
                             </ModalBody>
-                                {/* <Button id="btn-primary" onClick={this.funcLogin} type="button"> Submit </Button> */}
+                            <br />
+                                <Button id="btn-primary" onClick={this.funcLogin} type="button"> Submit </Button>
+                            <br />
                         </Form>
                         <div>
                             <h1> Signup Here! </h1>
@@ -101,12 +109,12 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
                                 <FormGroup>
                                     <Label htmlFor="email"> Email </Label>
                                     <br />
-                                    <Input value={this.state.email} onChange={e => this.setState({email: e.target.value})}/>
+                                    <Input value={this.state.signemail} onChange={e => this.setState({signemail: e.target.value})}/>
                                 </FormGroup>  
                                 <FormGroup>
                                     <Label htmlFor="password"> Password </Label>
                                     <br />
-                                    <Input value={this.state.password} onChange={e => this.setState({password: e.target.value})}/>
+                                    <Input value={this.state.signpassword} onChange={e => this.setState({signpassword: e.target.value})}/>
                                 </FormGroup> 
                                 <FormGroup>
                                     <Label htmlFor="username"> Username </Label>
@@ -126,3 +134,4 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
 }
 
 export default Auth; 
+

@@ -50,7 +50,7 @@ class App extends React.Component <{}, appState>{
           <div className="title">
             <h1> Workout Buddy </h1>
           </div>
-          { !this.state.sessionToken ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
+          { !localStorage.getItem('token') ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
             <Navbar removeToken={this.removeToken} /> 
             <Routines currentUser={this.userIdentification} sessionToken={this.state.sessionToken}/> 
             {/* <Favorite currentUser={this.state.currentUser} sessionToken={this.state.sessionToken} /> */}

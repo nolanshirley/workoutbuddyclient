@@ -1,7 +1,7 @@
 import { Component } from 'react'; 
 import { Button, Modal } from 'reactstrap'; 
 import CreateRoutine from '../Routine/CreateRoutine';
-import RoutineList from '../All Routines/RoutineMap'; 
+import RoutineMap from '../All Routines/RoutineMap'; 
 
 type routinesProps = { 
     currentUser: () => void, 
@@ -45,9 +45,9 @@ class Routines extends Component < routinesProps, routinesState > {
             <div>
                 <Button type="button" onClick={this.toggle}> Create Routine </Button>
                 <Modal className="routineModal" isOpen={this.state.modal}>
-                    <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} sessionToken={this.props.sessionToken} currentUser={this.props.currentUser}/>
+                    <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} sessionToken={this.props.sessionToken} currentUser={this.props.currentUser}/> 
                 </Modal>
-                <RoutineList currentUser={this.props.currentUser} routineArray={this.state.routine} routineFetch={this.getRoutines}/> 
+                <RoutineMap currentUser={this.props.currentUser} sessionToken={this.props.sessionToken} routineArray={this.state.routine} getRoutines={this.getRoutines}/> 
             </div>
         )
     }

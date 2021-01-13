@@ -5,7 +5,8 @@ import RoutineEdit from '../All Routines/RoutineEdit';
 type RoutineIndexProps = {
     currentUser: () => void, 
     wb: any, 
-    routineFetch: () => void
+    getRoutines: () => void, 
+    sessionToken: any
 }
 
 type RoutineIndexState = {
@@ -32,17 +33,16 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
         })       
         .then(r => r.json())
         .then(rObj => console.log(rObj))
-        this.props.routineFetch()
+        this.props.getRoutines()
     }
 
-
-
+   
     render () {
-        return (
+            return (
             <div>
                 <Card>
                     <CardTitle>
-                        Your Routine 
+                        Routine 
                     </CardTitle>
                     <CardBody>
                         <p> Exercise: {this.props.wb.exercise} </p>
@@ -53,10 +53,14 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
                         <p> Reps: {this.props.wb.reps} </p>
                     </CardBody>
                     <Modal isOpen={this.state.modal} >
-                        <RoutineEdit toggle={this.toggle} wb={this.props.wb} routineFetch={this.props.routineFetch} currentUser={this.props.currentUser}/> 
+                        <RoutineEdit toggle={this.toggle} wb={this.props.wb} getRoutines={this.props.getRoutines} currentUser={this.props.currentUser}/> 
                     </Modal>
+                        { this.props.wb.userId == localStorage.getItem('userId') ? 
+                        <>
                         <Button type="button" > Delete Routine </Button>
                         <Button type="button" onClick={this.toggle}> Edit Routine </Button>
+                        </> : null
+                        }
                 </Card>
             </div>
         )

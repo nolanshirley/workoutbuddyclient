@@ -5,11 +5,12 @@ import RoutineIndex from './RoutineIndex';
 type routineListProps = {
     currentUser: () => void, 
     routineArray: any, 
-    routineFetch: () => void
+    getRoutines: () => void, 
+    sessionToken: any
 }
 
 type routineListStates = {
-    routineArray: any
+    // routineArray: any
 }
 
 
@@ -19,15 +20,26 @@ class RoutineList extends Component <routineListProps, routineListStates> {
     constructor (props: routineListProps) {
         super (props) 
             this.state = {
-                routineArray: []
+                // routineArray: []
             }  
+    }
+
+
+    mapper = () => {
+        return this.props.routineArray?.map((wbObj: any, i: any) => {
+            return (
+                <>
+                    <RoutineIndex wb={wbObj} key={i}  currentUser={this.props.currentUser} getRoutines={this.props.getRoutines} sessionToken={this.props.sessionToken}/>
+                </>
+            )
+        })
     }
 
     render () {
         return (
             <Container>
                 <Row>
-                    {this.state.routineArray.map((wbObj: any, i: any) => <RoutineIndex wb={wbObj} key={i}  currentUser={this.props.currentUser}  routineFetch={this.props.routineFetch}/>)}
+                    {this.mapper()}
                 </Row>
             </Container>
         )
