@@ -1,6 +1,7 @@
 import {Component } from 'react'; 
 import {Card, CardTitle, CardBody, Button, Modal} from 'reactstrap'; 
 import RoutineEdit from '../All Routines/RoutineEdit'; 
+import '../All Routines/RoutineIndex.css'; 
 
 type RoutineIndexProps = {
     currentUser: () => void, 
@@ -40,11 +41,11 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
     render () {
             return (
             <div>
-                <Card>
+                <Card className="routineCard">
                     <CardTitle>
                         Routine 
                     </CardTitle>
-                    <CardBody>
+                    <CardBody className="cardBody">
                         <p> Exercise: {this.props.wb.exercise} </p>
                         <p> Equipment: {this.props.wb.equipment} </p>
                         <p> Weight: {this.props.wb.weight} lbs </p> 

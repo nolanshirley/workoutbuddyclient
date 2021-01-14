@@ -16,7 +16,7 @@ class Navbars extends Component <navbarProps, {}> {
                     <Nav>
                         <NavItem>   
                             <NavbarText>
-                                Workout Buddy
+                                {/* Workout Buddy */}
                             </NavbarText>
                         </NavItem>
                         <NavItem>

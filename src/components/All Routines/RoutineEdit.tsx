@@ -33,6 +33,10 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
         }
     }
 
+    cancel = () => {
+        this.setState({modal: !this.state.modal})
+    }
+
     resetForm = () => {
         this.setState(state => ({
             exercise: '', 
@@ -42,12 +46,10 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
             sets: 1,
             reps: 1
         }))
+        this.props.toggle(); 
     }
 
-    cancel = () => {
-        this.setState({modal: !this.state.modal})
-    }
-
+    
     handleSubmit = (e: any) => {
         e.preventDefault(); 
         const body = {
@@ -73,7 +75,6 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
             this.props.getRoutines()
             this.props.toggle(); 
             this.cancel(); 
-
         })
     }
 

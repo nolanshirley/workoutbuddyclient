@@ -126,6 +126,7 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
                         </Form>
                             <br />
                             <ModalFooter>
+                                <Button type="button" onClick={this.signupToggle}> Cancel </Button>
                                 <Button id="btn-primary" onClick={this.funcSignup}>Submit</Button>
                             </ModalFooter>
                 </Modal>

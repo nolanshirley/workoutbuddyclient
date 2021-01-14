@@ -1,0 +1,9 @@
+.routineCard {
+    width: 70em;
+}
+
+.cardBody {
+    display: flex; 
+    justify-content: space-evenly;
+    flex-direction: row, column;
+}

@@ -41,6 +41,7 @@ class createRoutine extends Component <createRoutineProps, createRoutineState> {
             sets: 1,
             reps: 1
         }))
+        this.props.toggle(); 
     }
 
     handleSubmit = (e: any) => {
