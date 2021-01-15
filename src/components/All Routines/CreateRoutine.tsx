@@ -1,5 +1,6 @@
 import { Component } from 'react'; 
 import { ModalHeader, Form, ModalBody, ModalFooter, FormGroup, Label, Input, Button } from 'reactstrap';
+import '../All Routines/CreateRoutine.css'; 
 
 
 type createRoutineProps = {

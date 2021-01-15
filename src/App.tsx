@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from './components/Auth/Auth'; 
 import Navbar from './components/Navbar/Navbar'; 
-import Routines from './components/Routine/Routines'; 
+import Routines from './components/All Routines/Routines'; 
 import Favorite from './components/All Routines/Favorites'; 
 import './App.css'; 
 
@@ -16,7 +16,7 @@ class App extends React.Component <{}, appState>{
     sessionToken: undefined, 
     currentUser: undefined
   }
-  
+
   componentDidMount() { 
     const token = localStorage.getItem('token')
     if (token) {
