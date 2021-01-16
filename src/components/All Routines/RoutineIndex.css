@@ -11,8 +11,20 @@
     gap: 12px; 
 }
 
+.deleteroutineButton {
+    width: 140px; 
+    height: 44px; 
+}
 
+.editroutineButton {
+    width: 140px; 
+    height: 44px; 
+}
 
+.routineContainer {
+    display: flex; 
+    flex-direction: row; 
+}
 
 
 

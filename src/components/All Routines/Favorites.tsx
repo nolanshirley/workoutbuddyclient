@@ -1,5 +1,6 @@
 import { Component } from 'react'; 
-import {Button, Modal, Form, FormGroup, Label, Input } from 'reactstrap'; 
+import {Button, Modal, ModalHeader, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap'; 
+import '../All Routines/Favorites.css'; 
 
 type FavoritesState = {
     comment: string, 
@@ -21,6 +22,11 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
             comment: '', 
             modal: false
         }
+    }
+
+    resetComment = () => {
+        this.toggle(); 
+        this.setState(state => ({comment: ''}))
     }
 
     toggle = () => {
@@ -51,7 +57,7 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
     render () {
         return (
             <div>
-                { !this.props.isCurrentUser ?
+                { !this.props.isCurrentUser ? 
                     <>
                         <Button type="button" onClick={this.toggle}>
                            Comment   
@@ -59,13 +65,21 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
                     </> : null
                 }
                 <Modal isOpen={this.state.modal}>
+                    <ModalHeader>
+                        What do you like about this Routine?
+                    </ModalHeader>
                     <Form>
                         <FormGroup>
                             <Label htmlFor="comment"> Comment </Label>
                             <Input value={this.state.comment} onChange={e => this.setState({comment: e.target.value})}/>
                         </FormGroup>
                     </Form>
+                    <ModalFooter>
+                        <Button type="button" onClick={this.resetComment}> Cancel </Button>
+                        <Button type="button" onClick={this.comment}> Submit </Button>
+                    </ModalFooter>
                 </Modal>
+                
             </div>
         )
     }
