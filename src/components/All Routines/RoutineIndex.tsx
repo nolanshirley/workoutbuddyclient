@@ -44,6 +44,7 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
         this.props.getRoutines()
     }
 
+    
     userCurrent = () => {
         if (this.props.wb.userId == localStorage.getItem('userId')) {
             this.setState({isCurrentUser: true}) 
@@ -52,13 +53,17 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
         }
     }
 
+
     render () {
             return (
             <Container className="routineContainer">
-                <Row >
-                    <Card className="routineCard">
+                <Row className="cardRow">
+                    <Card className="routineCard" >
                         <CardTitle>
-                            Routine 
+                            {/* {!this.state.isCurrentUser ? 
+                                <> 'Users' Routine' </>: 
+                                'Your Routine' 
+                            }            */}
                         </CardTitle>
                         <CardBody className="cardBody">
                             <p className="exercise"> Exercise: {this.props.wb.exercise} </p>
@@ -74,7 +79,7 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
                         </Modal>
                     </Card>
                 </Row>
-                <Row>
+                <Row className="buttonRow">
                     { this.state.isCurrentUser ? 
                         <>
                         <Button type="button" className="deleteroutineButton"> Delete Routine </Button>

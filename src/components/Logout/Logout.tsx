@@ -1,5 +1,6 @@
 import { Component } from 'react'; 
 import { Button } from 'reactstrap'; 
+import '../Logout/Logout.css'; 
 
 type logoutProps = {
     removeToken: () => void
@@ -15,7 +16,7 @@ class Logout extends Component <logoutProps, {}> {
     render () {
         return (
             <div>
-                <Button onClick={this.logout}> Logout </Button>
+                <Button onClick={this.logout} id="logoutButton"> Logout </Button>
             </div>
         )
     }

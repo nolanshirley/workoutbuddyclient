@@ -1,8 +1,16 @@
-.createroutineButton {
+.createRoutineButton {
     text-align: center;
+    padding: 10px; 
+    margin: 10px; 
+    height: 3.5em;
+    background-color: #c62828 !important;
+    color: white !important; 
+    border: 6px solid white !important;
+    font-weight: bolder !important;
 }
 
 .createRoutineDiv {
     text-align: center; 
     position: relative;
 }
+

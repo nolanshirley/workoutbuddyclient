@@ -1,4 +1,10 @@
 .titleText {
     text-align: center; 
+    font-size: 75px; 
+    color: #c62828;
+    font-family: 'Lobster', cursive !important;
 }
 
+.title {
+    padding: 10px; 
+}

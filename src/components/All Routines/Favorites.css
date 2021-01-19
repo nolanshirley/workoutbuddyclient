@@ -1,0 +1,7 @@
+#commentButton {
+    background-color: white !important;
+    color: #c62828 !important; 
+    /* border: 2px solid #c62828 !important; */
+    font-weight: bolder !important;
+    font-size: 18px !important; 
+}

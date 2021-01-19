@@ -44,7 +44,7 @@ class Routines extends Component < routinesProps, routinesState > {
     render () {
         return (
             <div className="createRoutineDiv">
-                <Button type="button" className="createroutineButton" onClick={this.toggle}> Create Routine </Button>
+                <Button type="button" className="createRoutineButton" onClick={this.toggle}> Create A Routine </Button>
                 <Modal className="routineModal" isOpen={this.state.modal}>
                     <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} sessionToken={this.props.sessionToken} currentUser={this.props.currentUser}/> 
                 </Modal>

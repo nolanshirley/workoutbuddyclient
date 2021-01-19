@@ -59,7 +59,7 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
             <div>
                 { !this.props.isCurrentUser ? 
                     <>
-                        <Button type="button" onClick={this.toggle}>
+                        <Button type="button" id="commentButton" onClick={this.toggle}>
                            Comment   
                         </Button> 
                     </> : null

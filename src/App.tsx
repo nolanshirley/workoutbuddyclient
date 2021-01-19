@@ -1,8 +1,7 @@
 import React from 'react';
 import Auth from './components/Auth/Auth'; 
 import Navbar from './components/Navbar/Navbar'; 
-import Routines from './components/All Routines/Routines'; 
-import Favorite from './components/All Routines/Favorites'; 
+import Routines from './components/All Routines/Routines';
 import './App.css'; 
 
 type appState = {
