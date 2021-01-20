@@ -5,3 +5,8 @@
     font-weight: bolder !important;
     font-size: 18px !important; 
 }
+
+#commentMap {
+    max-height: 40px;
+    overflow-y: auto;
+}

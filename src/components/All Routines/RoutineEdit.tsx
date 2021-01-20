@@ -5,7 +5,8 @@ type routineEditProps = {
     toggle: () => void, 
     wb: any, 
     getRoutines: () => void, 
-    currentUser: () => void
+    currentUser: () => void, 
+    sessionToken: any
 }
 
 type routineEditState = {
@@ -50,7 +51,7 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
     }
 
     
-    handleSubmit = (e: any) => {
+    handleSubmit = async (e: any) => {
         e.preventDefault(); 
         const body = {
             exercise: this.state.exercise, 
@@ -61,17 +62,18 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
             reps: this.state.reps, 
             userId: this.props.currentUser 
         }
-        const url = `http://localhost:3000/routine/${this.props.wb.id}` 
-        fetch(url, {
+        const url = `http://localhost:3000/routine/edit/${this.props.wb.id}` 
+        await fetch(url, {
             method: 'PUT', 
             headers: {
-                'Content-Type': 'application/json'
+                'Authorization': this.props.sessionToken, 
+                'Content-Type': 'application/json' 
             }, 
             body: JSON.stringify(body)
         })
         .then(r => r.json())
         .then(rObj => {
-            console.log(rObj)
+            console.log(rObj) 
             this.props.getRoutines()
             this.props.toggle(); 
             this.cancel(); 
@@ -97,7 +99,7 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
                         <br />
                         <FormGroup>
                             <Label htmlFor="weight"> Weight </Label>
-                            <Input value={this.state.weight} type="range" min="1" max="50" onChange={e => this.setState({weight: parseInt(e.target.value)})} /> 
+                            <Input value={this.state.weight} type="range" min="1" max="250" onChange={e => this.setState({weight: parseInt(e.target.value)})} /> 
                         {this.state.weight} lbs
                         </FormGroup>
                         <br />
@@ -115,7 +117,7 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
                         <br />
                         <FormGroup>
                             <Label htmlFor="reps"> Reps </Label>
-                            <Input value={this.state.reps} type="range" min="1" max="200" onChange={e => this.setState({reps: parseInt(e.target.value)})} /> 
+                            <Input value={this.state.reps} type="range" min="1" max="100" onChange={e => this.setState({reps: parseInt(e.target.value)})} /> 
                         {this.state.reps}
                         </FormGroup>
                     </ModalBody>

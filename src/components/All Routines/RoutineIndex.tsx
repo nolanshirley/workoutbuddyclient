@@ -13,7 +13,8 @@ type RoutineIndexProps = {
 
 type RoutineIndexState = {
     modal: boolean, 
-    isCurrentUser: boolean
+    isCurrentUser: boolean, 
+    routineId: number
 }
 
 class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
@@ -22,7 +23,8 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
         super(props) 
         this.state = {
             modal: false, 
-            isCurrentUser: false
+            isCurrentUser: false, 
+            routineId: 0
         }
     }
 
@@ -37,13 +39,15 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
     deleteRoutine = async () => {
         const url = `http://localhost:3000/routine/delete/${this.props.wb.id}`
         await fetch (url, {
-            method: 'DELETE'
+            method: 'DELETE', 
+            headers: {
+                'Authorization': this.props.sessionToken
+            }
         })       
         .then(r => r.json())
         .then(rObj => console.log(rObj))
         this.props.getRoutines()
     }
-
     
     userCurrent = () => {
         if (this.props.wb.userId == localStorage.getItem('userId')) {
@@ -56,7 +60,10 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
 
     render () {
             return (
-            <Container className="routineContainer">
+            <Container className="routineContainer" onMouseOver={() => {
+                this.setState({routineId: this.props.wb.id})
+                console.log(this.state.routineId)
+            }}>
                 <Row className="cardRow">
                     <Card className="routineCard" >
                         <CardTitle>
@@ -66,23 +73,23 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
                             }            */}
                         </CardTitle>
                         <CardBody className="cardBody">
-                            <p className="exercise"> Exercise: {this.props.wb.exercise} </p>
-                            <p className="equipment"> Equipment: {this.props.wb.equipment} </p>
-                            <p className="weight"> Weight: {this.props.wb.weight} lbs </p> 
-                            <p className="duration"> Duration: {this.props.wb.duration} min </p>
-                            <p className="sets"> Sets: {this.props.wb.sets} </p> 
-                            <p className="reps"> Reps: {this.props.wb.reps} </p>
-                                <Favorites wb={this.props.wb} isCurrentUser={this.state.isCurrentUser} currentUser={this.props.currentUser} sessionToken={this.props.sessionToken}/>
+                            <p className="exercise"> {this.props.wb.exercise} </p>
+                            <p className="equipment"> Equipment : {this.props.wb.equipment} </p>
+                            <p className="weight"> Weight : {this.props.wb.weight} lbs </p> 
+                            <p className="sets"> {this.props.wb.sets} sets </p> 
+                            <p className="reps"> {this.props.wb.reps} reps </p>
+                            <p className="duration"> {this.props.wb.duration} minute routine </p>
+                                <Favorites wb={this.props.wb} isCurrentUser={this.state.isCurrentUser} currentUser={this.props.currentUser} sessionToken={this.props.sessionToken} routineId={this.state.routineId} getRoutines={this.props.getRoutines}/> 
                         </CardBody>
                         <Modal isOpen={this.state.modal} >
-                            <RoutineEdit toggle={this.toggle} wb={this.props.wb} getRoutines={this.props.getRoutines} currentUser={this.props.currentUser}/> 
+                            <RoutineEdit toggle={this.toggle} sessionToken={this.props.sessionToken} wb={this.props.wb} getRoutines={this.props.getRoutines} currentUser={this.props.currentUser}/> 
                         </Modal>
                     </Card>
                 </Row>
                 <Row className="buttonRow">
                     { this.state.isCurrentUser ? 
                         <>
-                        <Button type="button" className="deleteroutineButton"> Delete Routine </Button>
+                        <Button type="button" className="deleteroutineButton" onClick={this.deleteRoutine}> Delete Routine </Button>
                         <Button type="button" className="editroutineButton" onClick={this.toggle}> Edit Routine </Button>
                         </> : null // added the empty html tags within the ternary b/c it will only return one thing within the ternary 
                     }

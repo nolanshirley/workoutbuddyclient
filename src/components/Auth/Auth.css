@@ -2,6 +2,14 @@
     text-align: center !important; 
 }
 
+#loginForm1 {  
+    background-color: #424242 !important; 
+}
+
+.modal-content {
+    background-color: #424242 !important;
+}
+
 .btn-primary {
     width: 90px;
     height: 50px; 
@@ -14,6 +22,9 @@
 
 #modalHeader {
     text-align: center;
+    color: #c62828 !important; 
+    font-family: 'Lobster', cursive;
+    font-size: 55px;
 }
 
 #logSubButton {
@@ -22,4 +33,7 @@
 
 #signupHeader {
     text-align: center;
+    font-family: 'Lobster', cursive;
+    font-size: 60px; 
+    color: #c62828 !important; 
 }

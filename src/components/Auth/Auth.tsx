@@ -3,7 +3,7 @@ import { Button, Modal, ModalBody, ModalFooter, FormGroup, Form, Label, Input } 
 import '../Auth/Auth.css'; 
 
 type authProps = {
-    tokenUpdate: (arg1: string, arg2: string) => void // this is how you pass a function down to a child component 
+    tokenUpdate: (arg1: string, arg2: string, arg3: string) => void // this is how you pass a function down to a child component 
 }
 
 type authState = {
@@ -49,7 +49,7 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
           body: JSON.stringify(body)
         })
         .then(r => r.json())
-        .then(rObj => this.props.tokenUpdate(rObj.sessionToken, rObj.user.id) )
+        .then(rObj => this.props.tokenUpdate(rObj.sessionToken, rObj.user.id, rObj.user.username) )
       }
 
       funcLogin = (e: any) => {
@@ -71,7 +71,7 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
           .then(r => r.json())
           .then(rObj => {
             console.log(rObj)  
-            this.props.tokenUpdate(rObj.sessionToken, rObj.user.id)})
+            this.props.tokenUpdate(rObj.sessionToken, rObj.user.id, rObj.user.username)})
       }
 
       signupToggle = () => {
@@ -83,9 +83,9 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
         return (
             <div className="authDiv">
                 <Button id="btn-primary" className="btn-primary" onClick={this.signupToggle} type="button"> Login </Button>
-                <Modal isOpen={this.state.modal} className="createModal">
+                <Modal isOpen={this.state.modal} className="createModal" id="modalCreate">
                         <h1 id="modalHeader"> Login </h1>
-                        <Form>
+                        <Form id="loginForm1">
                             <ModalBody>
                                 <FormGroup>
                                     <Label htmlFor="email"> Email </Label>

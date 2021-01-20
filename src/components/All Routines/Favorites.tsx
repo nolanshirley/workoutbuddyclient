@@ -11,7 +11,9 @@ type FavoritesProps = {
     currentUser: () => void, 
     sessionToken: any, 
     wb: any, 
-    isCurrentUser: boolean
+    isCurrentUser: boolean, 
+    routineId: number, 
+    getRoutines: () => void
 }
 
 class Favorites extends Component <FavoritesProps , FavoritesState> {
@@ -33,16 +35,16 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
         this.setState({ modal: !this.state.modal})
     }
 
-    comment = () => {
-        const url = "http://localhost:3000/favorite/comment"
+    comment = async () => {
+        const url = `http://localhost:3000/favorite/comment/${this.props.routineId}`
         const body = {
             comment: this.state.comment, 
             userId: this.props.currentUser
         }
-        fetch(url, {
+        await fetch(url, {
             method: 'POST', 
             headers: {
-                'Authorization': this.props.sessionToken, 
+                'Authorization': this.props.sessionToken, // localStorage.getItem('token') || ' ', the or operator helps with typescript readability 
                 'Content-Type': 'application/json'
             }, 
             body: JSON.stringify(body)
@@ -50,9 +52,11 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
         .then(r => r.json())
         .then(rObj => {
             console.log(rObj)
-            //this.favorites()
+            this.toggle()
+            this.props.getRoutines()
         }) 
     }
+
 
     render () {
         return (
@@ -79,7 +83,15 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
                         <Button type="button" onClick={this.comment}> Submit </Button>
                     </ModalFooter>
                 </Modal>
-                
+                {this.props.wb.favorites.map((comment: any, i: any) => {
+                    return (
+                     <div id="commentMap">  
+                        {comment.comment} 
+                        {/* {comment.from}'s {comment.comment} this will show the other users username for their comment on other routines*/} 
+                     </div>
+                    )
+                })}
+                        {/* give the parent div a fixed max height and overflow y auto will give it a scrollable box feature  */}
             </div>
         )
     }

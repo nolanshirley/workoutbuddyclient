@@ -5,21 +5,23 @@ import Routines from './components/All Routines/Routines';
 import './App.css'; 
 
 type appState = {
-  sessionToken: any, 
-  currentUser: any
+  sessionToken: string, 
+  currentUser: string, 
+  username: string
 }
 
 class App extends React.Component <{}, appState>{
 
   state = {
-    sessionToken: undefined, 
-    currentUser: undefined
+    sessionToken: '', 
+    currentUser: '', 
+    username: ''
   }
 
   componentDidMount() { 
     const token = localStorage.getItem('token')
     if (token) {
-      this.setState.bind({ sessionToken: token }) // why do I need to bind this? 
+      this.setState({ sessionToken: token }) 
     }
     this.userIdentification(); // added this to call the function for a user to get their userId
   }
@@ -32,15 +34,17 @@ class App extends React.Component <{}, appState>{
   }
 
 // making this an arrow function below allowed me to remove the .bind before I coded sessionToken 
-  tokenUpdate = (newToken: string, userId: string) => { // do I need a lifecycle here?
+  tokenUpdate = (newToken: string, userId: string, username: string) => { // do I need a lifecycle here?
     this.setState({sessionToken: newToken}) 
     localStorage.setItem('token', newToken); 
-    localStorage.setItem('userId', userId); 
+    localStorage.setItem('userId', userId);
+    localStorage.setItem('username', username);  
   }
 
   removeToken = () => {
-    this.setState({sessionToken: undefined}); 
-    this.setState({currentUser: undefined}); 
+    this.setState({sessionToken: ''}); 
+    this.setState({currentUser: ''});
+    this.setState({username: ''}) 
     localStorage.clear(); 
   }
 
@@ -52,8 +56,7 @@ class App extends React.Component <{}, appState>{
           </div>
           { !localStorage.getItem('token') ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
             <Navbar removeToken={this.removeToken} /> 
-            <Routines currentUser={this.userIdentification} sessionToken={this.state.sessionToken}/> 
-            {/* <Favorite currentUser={this.state.currentUser} sessionToken={this.state.sessionToken} /> */}
+            <Routines currentUser={this.userIdentification} sessionToken={this.state.sessionToken} />
             </div> }
         </div>
       )
