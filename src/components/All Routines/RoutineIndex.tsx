@@ -93,6 +93,12 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
                         <Button type="button" className="editroutineButton" onClick={this.toggle}> Edit Routine </Button>
                         </> : null // added the empty html tags within the ternary b/c it will only return one thing within the ternary 
                     }
+                    {
+                        !this.state.isCurrentUser ? 
+                        <div id="emptyDiv">
+                            
+                        </div> : null
+                    }
                 </Row>
             </Container>
         )

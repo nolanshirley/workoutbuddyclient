@@ -55,3 +55,7 @@ p {
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+#emptyDiv {
+    margin-right: 8.75em !important; 
+}
