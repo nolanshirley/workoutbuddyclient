@@ -16,6 +16,7 @@ class Logout extends Component <logoutProps, {}> {
     render () {
         return (
             <div>
+                
                 <Button onClick={this.logout} id="logoutButton"> Logout </Button>
             </div>
         )

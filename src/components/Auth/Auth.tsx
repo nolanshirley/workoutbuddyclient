@@ -98,7 +98,7 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
                                     <Input value={this.state.loginpassword} onChange={e => this.setState({loginpassword: e.target.value})}/>
                                 </FormGroup>
                             </ModalBody>
-                                <Button id="logSubButton" onClick={this.funcLogin} type="button"> Submit </Button>
+                                <Button id="loginButton" onClick={this.funcLogin} type="button"> Login </Button>
                             <br />
                         </Form>
                         <div>
@@ -125,8 +125,8 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
                         </Form>
                             <br />
                             <ModalFooter>
-                                <Button type="button" onClick={this.signupToggle}> Cancel </Button>
-                                <Button id="btn-primary" onClick={this.funcSignup}>Submit</Button>
+                                <Button type="button" id="authCancel" onClick={this.signupToggle}> Cancel </Button>
+                                <Button id="btn-primary" className="authSubmit"  onClick={this.funcSignup}>Submit</Button>
                             </ModalFooter>
                 </Modal>
             </div>

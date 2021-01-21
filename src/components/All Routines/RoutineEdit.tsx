@@ -1,5 +1,6 @@
 import {Component} from 'react'; 
 import {ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Button} from 'reactstrap'; 
+import '../All Routines/RoutineEdit.css'; 
 
 type routineEditProps = {
     toggle: () => void, 
@@ -84,7 +85,11 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
     render () {
         return (
             <div>
-                <ModalHeader charCode="WB"><h1> Edit Your Routine </h1></ModalHeader> 
+                    <ModalHeader charCode="WB"> 
+                        <h1 id="editTitle">
+                            Edit Your Routine 
+                        </h1>
+                    </ModalHeader> 
                 <Form> 
                     <ModalBody>
                         <FormGroup>
@@ -114,7 +119,7 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
                             <Input value={this.state.sets} type="range" min="1" max="50" onChange={e => this.setState({sets: parseInt(e.target.value)})} />
                         {this.state.sets}
                         </FormGroup>
-                        <br />
+                        <br /> 
                         <FormGroup>
                             <Label htmlFor="reps"> Reps </Label>
                             <Input value={this.state.reps} type="range" min="1" max="100" onChange={e => this.setState({reps: parseInt(e.target.value)})} /> 
@@ -122,8 +127,8 @@ class RoutineEdit extends Component <routineEditProps, routineEditState>{
                         </FormGroup>
                     </ModalBody>
                     <ModalFooter>
-                        <Button type="button" onClick={this.resetForm}> Cancel </Button>
-                        <Button type="button" onClick={this.handleSubmit}> Submit </Button> 
+                        <Button type="button" id="cancelButton" onClick={this.resetForm}> Cancel </Button>
+                        <Button type="button" id="submitButton" onClick={this.handleSubmit}> Submit </Button> 
                     </ModalFooter>
                 </Form>
             </div>

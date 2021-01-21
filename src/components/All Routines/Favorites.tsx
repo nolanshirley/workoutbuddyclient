@@ -1,5 +1,5 @@
 import { Component } from 'react'; 
-import {Button, Modal, ModalHeader, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap'; 
+import {Button, Modal, ModalHeader, ModalFooter, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap'; 
 import '../All Routines/Favorites.css'; 
 
 type FavoritesState = {
@@ -70,24 +70,30 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
                 }
                 <Modal isOpen={this.state.modal}>
                     <ModalHeader>
-                        What do you like about this Routine?
+                        <h1  id="commentHeader">
+                            What do you like about this Routine?
+                        </h1>
                     </ModalHeader>
                     <Form>
-                        <FormGroup>
-                            <Label htmlFor="comment"> Comment </Label>
-                            <Input value={this.state.comment} onChange={e => this.setState({comment: e.target.value})}/>
-                        </FormGroup>
+                        <ModalBody>
+                            <FormGroup>
+                                <br />
+                                {/* <Label id="labelComment" htmlFor="comment"> Comment </Label> */}
+                                <Input id="inputField" placeholder="Comment" value={this.state.comment} onChange={e => this.setState({comment: e.target.value})}/>
+                            </FormGroup>
+                        </ModalBody>
                     </Form>
                     <ModalFooter>
-                        <Button type="button" onClick={this.resetComment}> Cancel </Button>
-                        <Button type="button" onClick={this.comment}> Submit </Button>
+                        <Button type="button" id="cancelButton" onClick={this.resetComment}> Cancel </Button>
+                        <Button type="button" id="submitButton" onClick={this.comment}> Submit </Button>
                     </ModalFooter>
                 </Modal>
                 {this.props.wb.favorites.map((comment: any, i: any) => {
                     return (
                      <div id="commentMap">  
                         {comment.comment} 
-                        {/* {comment.from}'s {comment.comment} this will show the other users username for their comment on other routines*/} 
+                        {/* {comment.from}'s {comment.comment} will show the other users username for their comment on other routines*/} 
+                        {comment.from}'s {comment.comment}
                      </div>
                     )
                 })}

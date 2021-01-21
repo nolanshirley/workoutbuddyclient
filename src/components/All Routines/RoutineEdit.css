@@ -1,0 +1,22 @@
+#cancelButton {
+    color: white !important; 
+    background-color: #c62828 !important;
+    border: 2px solid white !important; 
+    font-weight: bolder !important; 
+}
+
+#submitButton {
+    color: white !important; 
+    background-color: #c62828!important;
+    border: 2px solid white !important; 
+    font-weight: bolder !important; 
+}
+
+#editTitle {
+    font-family: 'Lobster', cursive;
+    color:  #c62828 !important; 
+}
+
+.form-group {
+    color: white !important; 
+}

@@ -21,7 +21,7 @@ class Navbars extends Component <navbarProps, {}> {
                             </NavbarText>
                         </NavItem>
                         <NavItem>
-                            <Logout removeToken = {this.props.removeToken}/>
+                            <Logout removeToken = {this.props.removeToken} />
                         </NavItem>
                     </Nav>
                 </Navbar>

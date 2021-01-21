@@ -10,3 +10,30 @@
     max-height: 40px;
     overflow-y: auto;
 }
+
+#cancelButton {
+    color: white !important; 
+    background-color: #c62828!important;
+    border: 2px solid white !important; 
+    font-weight: bolder !important; 
+    margin-right: 5px; 
+}
+
+#submitButton {
+    color: white !important; 
+    background-color: #c62828!important;
+    border: 2px solid white !important; 
+    font-weight: bolder !important; 
+}
+
+#commentHeader {
+    color: #c62828; 
+    font-family: 'Lobster', cursive;
+    font-weight: bolder !important;
+    font-size: 30px !important; 
+}
+
+#labelComment {
+    padding-left: 8px; 
+    padding-top: 10px; 
+}

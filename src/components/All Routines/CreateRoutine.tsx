@@ -73,12 +73,16 @@ class createRoutine extends Component <createRoutineProps, createRoutineState> {
         })
     }
 
-    
+
 
     render () {
         return (
             <div>
-                <ModalHeader charCode="WB"> Create a New Routine </ModalHeader> 
+                    <ModalHeader charCode="WB"> 
+                        <h1 id="routineHeader">
+                            Create a New Routine
+                        </h1> 
+                    </ModalHeader> 
                 <Form> 
                     <ModalBody>
                         <FormGroup>
@@ -116,8 +120,8 @@ class createRoutine extends Component <createRoutineProps, createRoutineState> {
                         </FormGroup>
                     </ModalBody>
                     <ModalFooter>
-                        <Button type="button" onClick={this.resetForm}> Cancel </Button>
-                        <Button type="button" onClick={this.handleSubmit}> Submit </Button> 
+                        <Button type="button" id="cancelButton" onClick={this.resetForm}> Cancel </Button>
+                        <Button type="button" id="submitButton" onClick={this.handleSubmit}> Submit </Button> 
                     </ModalFooter>
                 </Form>
             </div>

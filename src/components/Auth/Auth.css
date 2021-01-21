@@ -27,8 +27,13 @@
     font-size: 55px;
 }
 
-#logSubButton {
+#loginButton {
     margin-left: 25em; 
+    width: 5em !important; 
+    color: white !important; 
+    background-color: #c62828 !important; 
+    font-weight: bolder !important; 
+    border: 2px solid white; 
 }
 
 #signupHeader {
@@ -36,4 +41,32 @@
     font-family: 'Lobster', cursive;
     font-size: 60px; 
     color: #c62828 !important; 
+}
+
+Label {
+    color: white;
+    font-size: 20px;  
+    font-weight: bolder; 
+}
+
+Input {
+    border: 2px solid #c62828 !important; 
+}
+
+#authCancel {
+    color: white !important; 
+    background-color: #c62828!important;
+    border: 2px solid white; 
+    font-weight: bolder; 
+}
+
+.authSubmit {
+    color: white !important; 
+    background-color: #c62828!important;
+    border: 2px solid white !important; 
+    font-weight: bolder !important; 
+}
+
+.form-control:focus {
+    color: #8e0000 !important; 
 }
