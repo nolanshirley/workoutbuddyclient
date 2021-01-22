@@ -3,4 +3,16 @@
     color: white !important; 
     border: 2px solid white !important; 
     font-weight: bolder !important;
+    height: 3em !important; 
+    width: 5.2em !important; 
+    position: relative;
+}
+
+#usernameDisplay {
+    padding-right: 1em;
+    margin-top: 0.5em; 
+}
+
+#logoutRow {
+    padding: 1em; 
 }

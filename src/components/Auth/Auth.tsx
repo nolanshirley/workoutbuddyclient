@@ -3,7 +3,8 @@ import { Button, Modal, ModalBody, ModalFooter, FormGroup, Form, Label, Input } 
 import '../Auth/Auth.css'; 
 
 type authProps = {
-    tokenUpdate: (arg1: string, arg2: string, arg3: string) => void // this is how you pass a function down to a child component 
+    tokenUpdate: (arg1: string, arg2: string, arg3: string) => void, // this is how you pass a function down to a child component 
+    adminCheck: () => void
 }
 
 type authState = {
@@ -49,7 +50,11 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
           body: JSON.stringify(body)
         })
         .then(r => r.json())
-        .then(rObj => this.props.tokenUpdate(rObj.sessionToken, rObj.user.id, rObj.user.username) )
+        .then(rObj => {this.props.tokenUpdate(rObj.sessionToken, rObj.user.id, rObj.user.username);
+            if (rObj.user.role === "admin") {
+                this.props.adminCheck()
+            } 
+        })
       }
 
       funcLogin = (e: any) => {

@@ -1,9 +1,10 @@
 import { Component } from 'react'; 
-import { Button } from 'reactstrap'; 
+import { Button, Row } from 'reactstrap'; 
 import '../Logout/Logout.css'; 
 
 type logoutProps = {
-    removeToken: () => void
+    removeToken: () => void, 
+    username: string
 }
 
 class Logout extends Component <logoutProps, {}> {
@@ -13,11 +14,17 @@ class Logout extends Component <logoutProps, {}> {
         this.props.removeToken()
     }
 
+
+
     render () {
         return (
             <div>
-                
-                <Button onClick={this.logout} id="logoutButton"> Logout </Button>
+                <Row id="logoutRow">
+                    <p id="usernameDisplay">
+                        Hello, {this.props.username}  
+                    </p>
+                    <Button onClick={this.logout} id="logoutButton"> Logout </Button>
+                </Row>
             </div>
         )
     }

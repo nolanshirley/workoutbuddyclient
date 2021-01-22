@@ -4,7 +4,8 @@ import { Nav, NavItem, NavbarText, Navbar } from 'reactstrap';
 import '../Navbar/Navbar.css'; 
 
 type navbarProps = {
-    removeToken: () => void
+    removeToken: () => void, 
+    username: string
 }
 
 class Navbars extends Component <navbarProps, {}> {
@@ -21,7 +22,7 @@ class Navbars extends Component <navbarProps, {}> {
                             </NavbarText>
                         </NavItem>
                         <NavItem>
-                            <Logout removeToken = {this.props.removeToken} />
+                            <Logout removeToken = {this.props.removeToken} username={this.props.username}/>
                         </NavItem>
                     </Nav>
                 </Navbar>

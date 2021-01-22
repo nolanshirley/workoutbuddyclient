@@ -7,7 +7,8 @@ import './App.css';
 type appState = {
   sessionToken: string, 
   currentUser: string, 
-  username: string
+  username: string, 
+  isAdmin: boolean
 }
 
 class App extends React.Component <{}, appState>{
@@ -15,7 +16,8 @@ class App extends React.Component <{}, appState>{
   state = {
     sessionToken: '', 
     currentUser: '', 
-    username: ''
+    username: '', 
+    isAdmin: false
   }
 
   componentDidMount() { 
@@ -23,9 +25,18 @@ class App extends React.Component <{}, appState>{
     if (token) {
       this.setState({ sessionToken: token }) 
     }
+
+    this.getUsername(); 
     this.userIdentification(); // added this to call the function for a user to get their userId
   }
 
+  getUsername = () => {
+    const userName = localStorage.getItem('username')
+    if (userName) {
+      this.setState({username: userName})
+    }
+  }
+  
   userIdentification = () => {
     const userId = localStorage.getItem('userID'); 
     if(userId) {
@@ -48,14 +59,26 @@ class App extends React.Component <{}, appState>{
     localStorage.clear(); 
   }
 
+  adminCheck = () => {
+      this.setState({isAdmin: true })
+  }
+
+
+
     render () {
       return (
         <div className="App">
           <div className="title">
             <h1 className="titleText"> Workout Buddy </h1>
           </div>
-          { !localStorage.getItem('token') ? <Auth tokenUpdate={this.tokenUpdate} /> : <div>
-            <Navbar removeToken={this.removeToken} /> 
+          {
+            !localStorage.getItem('token') ? 
+            <p id="loginPara">
+            Welcome to Workout Buddy, I created this application to connect YOU with other individuals to share your own Workout Routines and allow you to comment and make suggestions on other Routines. I hope you enjoy!
+          </p> : null 
+          }
+          { !localStorage.getItem('token') ? <Auth tokenUpdate={this.tokenUpdate} adminCheck={this.adminCheck}/> : <div>
+            <Navbar removeToken={this.removeToken} username={this.state.username}/> 
             <Routines currentUser={this.userIdentification} sessionToken={this.state.sessionToken} />
             </div> }
         </div>

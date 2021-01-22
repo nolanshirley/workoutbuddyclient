@@ -1,5 +1,5 @@
 import { Component } from 'react'; 
-import {Button, Modal, ModalHeader, ModalFooter, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap'; 
+import {Button, Modal, ModalHeader, ModalFooter, ModalBody, Form, FormGroup, Input } from 'reactstrap'; 
 import '../All Routines/Favorites.css'; 
 
 type FavoritesState = {
@@ -60,7 +60,7 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
 
     render () {
         return (
-            <div>
+            <div id="parentDiv">
                 { !this.props.isCurrentUser ? 
                     <>
                         <Button type="button" id="commentButton" onClick={this.toggle}>
@@ -91,9 +91,8 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
                 {this.props.wb.favorites.map((comment: any, i: any) => {
                     return (
                      <div id="commentMap">  
-                        {comment.comment} 
                         {/* {comment.from}'s {comment.comment} will show the other users username for their comment on other routines*/} 
-                        {comment.from}'s {comment.comment}
+                        {comment.from}'s comment:  {comment.comment}
                      </div>
                     )
                 })}

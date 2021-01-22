@@ -79,7 +79,9 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
                             <p className="sets"> {this.props.wb.sets} sets </p> 
                             <p className="reps"> {this.props.wb.reps} reps </p>
                             <p className="duration"> {this.props.wb.duration} minute routine </p>
+                            <p className="comments"> 
                                 <Favorites wb={this.props.wb} isCurrentUser={this.state.isCurrentUser} currentUser={this.props.currentUser} sessionToken={this.props.sessionToken} routineId={this.state.routineId} getRoutines={this.props.getRoutines}/> 
+                            </p>
                         </CardBody>
                         <Modal isOpen={this.state.modal} >
                             <RoutineEdit toggle={this.toggle} sessionToken={this.props.sessionToken} wb={this.props.wb} getRoutines={this.props.getRoutines} currentUser={this.props.currentUser}/> 

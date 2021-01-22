@@ -1,10 +1,23 @@
 .titleText {
     text-align: center; 
-    font-size: 75px; 
+    font-size: 85px; 
     color: #c62828;
     font-family: 'Lobster', cursive !important;
+}
+
+.titleText:hover {
+    color: white; 
 }
 
 .title {
     padding: 10px; 
 }
+
+#loginPara {
+    max-width: 60em;
+    text-align: center;
+    margin-left: 8em; 
+    margin-bottom: 2em; 
+    margin-top: 1em; 
+}
+
