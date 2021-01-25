@@ -90,8 +90,7 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
                 </Modal>
                 {this.props.wb.favorites.map((comment: any, i: any) => {
                     return (
-                     <div id="commentMap">  
-                        {/* {comment.from}'s {comment.comment} will show the other users username for their comment on other routines*/} 
+                     <div id="commentMap">   
                         {comment.from}'s comment:  {comment.comment}
                      </div>
                     )

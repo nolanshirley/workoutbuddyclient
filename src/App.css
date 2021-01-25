@@ -3,10 +3,11 @@
     font-size: 85px; 
     color: #c62828;
     font-family: 'Lobster', cursive !important;
+    text-shadow: -5px 5px 20px #ced0d3;
 }
 
 .titleText:hover {
-    color: white; 
+    text-shadow: -20px 10px 15px #ced0d3;
 }
 
 .title {
@@ -19,5 +20,10 @@
     margin-left: 8em; 
     margin-bottom: 2em; 
     margin-top: 1em; 
+    text-shadow: 5px 5px 15px #c62828;
+}
+
+#loginPara:hover {
+    text-shadow: 10px 10px 20px #c62828; 
 }
 
