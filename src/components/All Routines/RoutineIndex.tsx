@@ -1,5 +1,5 @@
 import {Component } from 'react'; 
-import {Card, CardTitle, CardBody, Button, Modal, Container, Row } from 'reactstrap'; 
+import {Card, CardBody, Button, Modal, Container, Row } from 'reactstrap'; 
 import RoutineEdit from '../All Routines/RoutineEdit'; 
 import '../All Routines/RoutineIndex.css'; 
 import Favorites from '../All Routines/Favorites'; 
@@ -8,7 +8,8 @@ type RoutineIndexProps = {
     currentUser: () => void, 
     wb: any, 
     getRoutines: () => void, 
-    sessionToken: any
+    sessionToken: any, 
+    adminCheck: boolean
 }
 
 type RoutineIndexState = {
@@ -58,6 +59,20 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
     }
 
 
+    adminRoutineDelete = async () => {
+        if (this.props.adminCheck) {
+            const url = `http://localhost:3000/adminRoutineDelete/${this.props.wb.id}`
+            await fetch(url, {
+            method: 'DELETE', 
+            headers: {
+                'Authorization': this.props.sessionToken
+            
+            }
+        }
+        )} 
+    }
+
+
     render () {
             return (
             <Container className="routineContainer" onMouseOver={() => {
@@ -66,12 +81,6 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
             }}>
                 <Row className="cardRow">
                     <Card className="routineCard" >
-                        <CardTitle>
-                            {/* {!this.state.isCurrentUser ? 
-                                <> 'Users' Routine' </>: 
-                                'Your Routine' 
-                            }            */}
-                        </CardTitle>
                         <CardBody className="cardBody">
                             <p className="exercise"> {this.props.wb.exercise} </p>
                             <p className="equipment"> Equipment : {this.props.wb.equipment} </p>
@@ -79,6 +88,8 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
                             <p className="sets"> {this.props.wb.sets} sets </p> 
                             <p className="reps"> {this.props.wb.reps} reps </p>
                             <p className="duration"> {this.props.wb.duration} minute routine </p>
+                            <p></p>
+                            <p></p>
                             <p className="comments"> 
                                 <Favorites wb={this.props.wb} isCurrentUser={this.state.isCurrentUser} currentUser={this.props.currentUser} sessionToken={this.props.sessionToken} routineId={this.state.routineId} getRoutines={this.props.getRoutines}/> 
                             </p>

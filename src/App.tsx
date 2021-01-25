@@ -28,6 +28,7 @@ class App extends React.Component <{}, appState>{
 
     this.getUsername(); 
     this.userIdentification(); // added this to call the function for a user to get their userId
+    this.adminCheck();
   }
 
   getUsername = () => {
@@ -36,7 +37,7 @@ class App extends React.Component <{}, appState>{
       this.setState({username: userName})
     }
   }
-  
+
   userIdentification = () => {
     const userId = localStorage.getItem('userID'); 
     if(userId) {
@@ -79,7 +80,7 @@ class App extends React.Component <{}, appState>{
           }
           { !localStorage.getItem('token') ? <Auth tokenUpdate={this.tokenUpdate} adminCheck={this.adminCheck}/> : <div>
             <Navbar removeToken={this.removeToken} username={this.state.username}/> 
-            <Routines currentUser={this.userIdentification} sessionToken={this.state.sessionToken} />
+            <Routines currentUser={this.userIdentification} sessionToken={this.state.sessionToken} adminCheck={this.state.isAdmin}/>
             </div> }
         </div>
       )

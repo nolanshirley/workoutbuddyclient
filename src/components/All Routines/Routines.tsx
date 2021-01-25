@@ -6,7 +6,8 @@ import '../All Routines/Routines.css';
 
 type routinesProps = { 
     currentUser: () => void, 
-    sessionToken: any
+    sessionToken: any, 
+    adminCheck: boolean
 }
 
 type routinesState = {
@@ -48,7 +49,7 @@ class Routines extends Component < routinesProps, routinesState > {
                 <Modal className="routineModal" isOpen={this.state.modal}>
                     <CreateRoutine toggle={this.toggle} getRoutines={this.getRoutines} sessionToken={this.props.sessionToken} currentUser={this.props.currentUser}/> 
                 </Modal>
-                <RoutineMap currentUser={this.props.currentUser} sessionToken={this.props.sessionToken} routineArray={this.state.routine} getRoutines={this.getRoutines} /> 
+                <RoutineMap currentUser={this.props.currentUser} sessionToken={this.props.sessionToken} routineArray={this.state.routine} getRoutines={this.getRoutines} adminCheck={this.props.adminCheck} /> 
             </div>
         )
     }

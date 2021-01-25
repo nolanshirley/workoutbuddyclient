@@ -6,7 +6,8 @@ type routineListProps = {
     currentUser: () => void, 
     routineArray: any, 
     getRoutines: () => void, 
-    sessionToken: any
+    sessionToken: any, 
+    adminCheck: boolean
 }
 
 type routineListStates = {
@@ -29,7 +30,7 @@ class RoutineList extends Component <routineListProps, routineListStates> {
         return this.props.routineArray?.map((wbObj: any, i: any) => {
             return (
                 <>
-                    <RoutineIndex wb={wbObj} key={i}  currentUser={this.props.currentUser} getRoutines={this.props.getRoutines} sessionToken={this.props.sessionToken} />
+                    <RoutineIndex wb={wbObj} key={i}  currentUser={this.props.currentUser} getRoutines={this.props.getRoutines} sessionToken={this.props.sessionToken} adminCheck={this.props.adminCheck} />
                 </>
             )
         })
