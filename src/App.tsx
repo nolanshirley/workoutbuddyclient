@@ -28,7 +28,7 @@ class App extends React.Component <{}, appState>{
 
     this.getUsername(); 
     this.userIdentification(); // added this to call the function for a user to get their userId
-    this.adminCheck();
+    // this.adminCheck();
   }
 
   getUsername = () => {

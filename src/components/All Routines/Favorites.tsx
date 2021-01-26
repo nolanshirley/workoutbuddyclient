@@ -79,7 +79,7 @@ class Favorites extends Component <FavoritesProps , FavoritesState> {
                             <FormGroup>
                                 <br />
                                 {/* <Label id="labelComment" htmlFor="comment"> Comment </Label> */}
-                                <Input id="inputField" placeholder="Comment" value={this.state.comment} onChange={e => this.setState({comment: e.target.value})}/>
+                                <Input id="inputField" placeholder="Write a Comment" value={this.state.comment} onChange={e => this.setState({comment: e.target.value})}/>
                             </FormGroup>
                         </ModalBody>
                     </Form>

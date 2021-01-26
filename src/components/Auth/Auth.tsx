@@ -31,7 +31,7 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
             modal: false
         }
     }
-    
+
     funcSignup = (e: any) => {
         e.preventDefault(); 
     

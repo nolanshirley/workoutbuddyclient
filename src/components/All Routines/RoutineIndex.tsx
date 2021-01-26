@@ -60,16 +60,19 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
 
 
     adminRoutineDelete = async () => {
-        if (this.props.adminCheck) {
+        if (this.props.adminCheck === true) {
             const url = `http://localhost:3000/adminRoutineDelete/${this.props.wb.id}`
             await fetch(url, {
             method: 'DELETE', 
             headers: {
                 'Authorization': this.props.sessionToken
-            
             }
         }
-        )} 
+        )
+        .then(r => r.json())
+        .then(rObj => console.log(rObj))
+        this.props.getRoutines();
+    } 
     }
 
 
@@ -88,7 +91,13 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
                             <p className="sets"> {this.props.wb.sets} sets </p> 
                             <p className="reps"> {this.props.wb.reps} reps </p>
                             <p className="duration"> {this.props.wb.duration} minute routine </p>
-                            <p></p>
+                            <p>
+                            { this.props.adminCheck === true ? 
+                            <Button type="button" id="adminButton" onClick={this.adminRoutineDelete}>
+                                Delete Routine
+                            </Button> : null 
+                            }
+                            </p>
                             <p></p>
                             <p className="comments"> 
                                 <Favorites wb={this.props.wb} isCurrentUser={this.state.isCurrentUser} currentUser={this.props.currentUser} sessionToken={this.props.sessionToken} routineId={this.state.routineId} getRoutines={this.props.getRoutines}/> 

@@ -11,6 +11,7 @@
 #usernameDisplay {
     padding-right: 0.5em;
     margin-top: 0.5em;
+    text-shadow: -5px 5px 20px #c62828;
 }
 
 #logoutRow {

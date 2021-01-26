@@ -15,7 +15,6 @@ class Logout extends Component <logoutProps, {}> {
     }
 
 
-
     render () {
         return (
             <div>
