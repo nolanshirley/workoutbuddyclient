@@ -61,7 +61,7 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
 
     adminRoutineDelete = async () => {
         if (this.props.adminCheck === true) {
-            const url = `http://localhost:3000/adminRoutineDelete/${this.props.wb.id}`
+            const url = `http://localhost:3000/routine/adminRoutineDelete/${this.props.wb.id}`
             await fetch(url, {
             method: 'DELETE', 
             headers: {
@@ -111,14 +111,14 @@ class RoutineIndex extends Component <RoutineIndexProps, RoutineIndexState>{
                 <Row className="buttonRow">
                     { this.state.isCurrentUser ? 
                         <>
-                        <Button type="button" className="deleteroutineButton" onClick={this.deleteRoutine}> Delete Routine </Button>
+                        <Button type="button" className="deleteroutineButton" onClick={this.deleteRoutine}> Delete Routine         </Button>
                         <Button type="button" className="editroutineButton" onClick={this.toggle}> Edit Routine </Button>
                         </> : null // added the empty html tags within the ternary b/c it will only return one thing within the ternary 
                     }
                     {
                         !this.state.isCurrentUser ? 
                         <div id="emptyDiv">
-                            
+
                         </div> : null
                     }
                 </Row>

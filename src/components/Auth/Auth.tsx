@@ -76,7 +76,11 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
           .then(r => r.json())
           .then(rObj => {
             console.log(rObj)  
-            this.props.tokenUpdate(rObj.sessionToken, rObj.user.id, rObj.user.username)})
+            this.props.tokenUpdate(rObj.sessionToken, rObj.user.id, rObj.user.username)
+            if (rObj.user.role === "admin") {
+                this.props.adminCheck()
+            } 
+        })
       }
 
       signupToggle = () => {
@@ -100,7 +104,7 @@ class Auth extends Component <authProps, authState>  { // <token, {}> use empty 
                                 <FormGroup>
                                     <Label htmlFor="password"> Password </Label>
                                     <br />
-                                    <Input value={this.state.loginpassword} onChange={e => this.setState({loginpassword: e.target.value})}/>
+                                    <Input value={this.state.loginpassword} type="password" onChange={e => this.setState({loginpassword: e.target.value})}/>
                                 </FormGroup>
                             </ModalBody>
                                 <Button id="loginButton" onClick={this.funcLogin} type="button"> Login </Button>

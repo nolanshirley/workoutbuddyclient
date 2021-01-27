@@ -47,7 +47,7 @@ class App extends React.Component <{}, appState>{
 
 // making this an arrow function below allowed me to remove the .bind before I coded sessionToken 
   tokenUpdate = (newToken: string, userId: string, username: string) => { // do I need a lifecycle here?
-    this.setState({sessionToken: newToken}) 
+    this.setState({sessionToken: newToken, username: username}) 
     localStorage.setItem('token', newToken); 
     localStorage.setItem('userId', userId);
     localStorage.setItem('username', username);  

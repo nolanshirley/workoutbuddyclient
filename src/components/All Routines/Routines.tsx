@@ -16,7 +16,7 @@ type routinesState = {
 }
 
 class Routines extends Component < routinesProps, routinesState > {
-    
+
     constructor(props: routinesProps) {
         super(props)
         this.state = {
@@ -40,6 +40,21 @@ class Routines extends Component < routinesProps, routinesState > {
         })
         .then(r => r.json())
         .then(rArr => this.setState({ routine: rArr}))
+    }
+
+    adminUserSearch = async () => {
+        if (this.props.adminCheck === true) {
+            const url = `http://localhost:3000/user/adminSearch/username`
+            await fetch(url, {
+            method: 'GET', 
+            headers: {
+                'Authorization': this.props.sessionToken
+                }
+            })
+            .then(r => r.json())
+            .then(rObj => console.log(rObj))
+            this.getRoutines();
+        } 
     }
 
     render () {

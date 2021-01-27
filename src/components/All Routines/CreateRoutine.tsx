@@ -87,12 +87,12 @@ class createRoutine extends Component <createRoutineProps, createRoutineState> {
                     <ModalBody>
                         <FormGroup>
                             <Label htmlFor="exercise"> Exercise </Label>
-                            <Input value={this.state.exercise} onChange={e => this.setState({exercise: e.target.value})}/>
+                            <Input placeholder="What Exercise did You Complete?" value={this.state.exercise} onChange={e => this.setState({exercise: e.target.value})}/>
                         </FormGroup>
                         <br />
                         <FormGroup>
                             <Label htmlFor="equipment"> Equipment </Label>
-                            <Input value={this.state.equipment} onChange={e => this.setState({equipment: e.target.value})} />
+                            <Input placeholder="What Equipment did you use, if any?" value={this.state.equipment} onChange={e => this.setState({equipment: e.target.value})} />
                         </FormGroup>
                         <br />
                         <FormGroup>
