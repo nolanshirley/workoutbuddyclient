@@ -16,6 +16,7 @@ p {
 .comments {
     font-size: 15px; 
     font-weight: bolder; 
+    width: 30rem; 
 }
 
 .card-body {
@@ -49,12 +50,20 @@ p {
     font-weight: bolder !important;
 }
 
+#adminButton {
+    background-color: #c62828 !important;
+    color: white !important; 
+    border: 2px solid #c62828 !important;
+    font-weight: bolder !important;
+}
+
 .routineContainer {
     display: flex; 
     flex-direction: row; 
     justify-content: space-evenly;
     align-content: space-between;
 }
+
 
 .cardRow {
     padding-right: 8em; 
